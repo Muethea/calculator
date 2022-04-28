@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <input readonly id="operator">
+        <input readonly placeholder="0" type="number" id="result" class="resultado">
+
+
+        <div class="row">
+            <button id="clear">AC</button>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <button id="del">&larr;</button>
+            <button id="sqr">&radic;<span style="text-decoration: overline"> x</button>
+            <button id="exp">X <sup>x</sup></button>
+            <button id="lg">log</button>
+        </div>
+
+        <div class="row">
+            <button id="num-7">7</button>
+            <button id="num-8">8</button>
+            <button id="num-9">9</button>
+            <button id="plus">+</button>
+        </div>
+        <div class="row">
+            <button id="num-4">4</button>
+            <button id="num-5">5</button>
+            <button id="num-6">6</button>
+            <button id="minus">-</button>
+        </div>
+        <div class="row">
+            <button id="num-1">1</button>
+            <button id="num-2">2</button>
+            <button id="num-3">3</button>
+            <button id="divide">/</button>
+        </div>
+        <div class="row">
+
+            <button id="num-0">0</button>
+            <button id="num-00">00</button>
+            <button id="calculate">=</button>
+            <button id="multiply">X</button>
+
+        </div>
+
+
+    </div>
+
+    <div id="calc-history">
+
+        <span id="span_hist">Histórico</span>
+        <hr>
+        <div id="calc-history-box">
+
+            <textarea readonly placeholder="Nenhum Histórico" name="historico_calc" id="his" cols="25" rows="25" class="history"></textarea>
+
+
+        </div>
+        <button id="Dell" class="apagarH"></button>
+        <form action="https://script.google.com/macros/s/AKfycbwPBdupBa83YOwB-EaSn-f9J6rhBtWB20oVDVBKTwTT2X4Kx7hp2gcXjjMEJkDgrLeJ/exec" method="post" id="contactForm">
+            <button id="submeter" class="Enviar" type="submit">Enviar Histórico</button>
+        </form>
+        <script src="script.js"></script>
+        <script>
+            const scriptURL = ''
+            const form = document.forms['contactForm']
+
+            form.addEventListener('submeter', e => {
+                e.preventDefault()
+                fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(form)
+                    })
+                    .then(response => console.log('Success!', response))
+                    .catch(error => console.error('Error!', error.message))
+            })
+        </script>
+
+</body>
+
+</html>
